@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">Scavenger Hunt</string>
+
+    <string name="hello_world">Hello world!</string>
+    <string name="action_map">Map</string>
+    <string name="action_logout">Log Out</string>
+    <string name="title_activity_login">LoginActivity</string>
+    <string name="sign_up">" Sign Up "</string>
+    <string name="login">" Log in "</string>
+    <string name="title_activity_maps">Map</string>
+</resources>
