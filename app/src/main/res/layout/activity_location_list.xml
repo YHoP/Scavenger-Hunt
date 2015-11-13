@@ -1,0 +1,94 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                xmlns:tools="http://schemas.android.com/tools"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:paddingLeft="@dimen/activity_horizontal_margin"
+                android:paddingRight="@dimen/activity_horizontal_margin"
+                android:paddingTop="@dimen/activity_vertical_margin"
+                android:paddingBottom="@dimen/activity_vertical_margin"
+                tools:context="com.morgan.yvonne.scavengerhunter.ui.LocationListActivity">
+
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <ListView
+            android:layout_width="match_parent"
+            android:layout_height="246dp"
+            android:id="@android:id/list"
+            android:layout_centerHorizontal="true"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="ADD ANOTHER LOCATION &amp; CLUE"
+            android:id="@+id/txtCreateHunt"
+            android:textColor="#ffb836"
+            android:textStyle="bold"
+            android:textSize="16sp"
+            android:layout_below="@+id/btnFindHunt"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="3dp"
+            />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="ADDRESS"
+            android:id="@+id/txtAddress"
+            android:layout_below="@+id/txtEnterStartLocation"
+            android:layout_centerHorizontal="true"
+            android:textColor="#ffb836"
+            android:textSize="16sp"
+            android:layout_marginTop="3dp"/>
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/txtEnterStartLocation"
+            android:layout_below="@+id/txtCreateHunt"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginTop="3dp"
+            android:hint="221b Baker Street, London NW1 6XE, United Kingdom"
+            android:textSize="16sp"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="DESCRIPTION"
+            android:id="@+id/txtDescription"
+            android:textColor="#ffb836"
+            android:textSize="16sp"
+            android:layout_below="@+id/txtEnterDescription"
+            android:layout_alignLeft="@+id/txtAddress"
+            android:layout_alignStart="@+id/txtAddress"
+            android:layout_marginTop="3dp"/>
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/txtEnterDescription"
+            android:layout_below="@+id/txtEnterStartLocation"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="3dp"
+            android:hint="Help find clues!"
+            android:textSize="16sp"/>
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="submit"
+            android:id="@+id/btnCreateHunt"
+            android:singleLine="true"
+            android:background="#90ffb836"
+            android:textColor="#ffffff"
+            android:textSize="16sp"
+            android:onClick="createHunt"
+            android:nestedScrollingEnabled="false"
+            android:layout_alignParentBottom="true"
+            android:layout_marginTop="10dp"/>
+    </LinearLayout>
+
+</RelativeLayout>

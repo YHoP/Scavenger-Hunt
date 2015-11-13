@@ -19,7 +19,6 @@ import com.google.android.gms.maps.model.MarkerOptions;
 import com.morgan.yvonne.scavengerhunter.R;
 import static com.google.android.gms.common.GooglePlayServicesUtil.isGooglePlayServicesAvailable;
 
-
 /*
 To make this work in Android Emulator:
 1. In Emulator:
@@ -77,7 +76,6 @@ public class MapsActivity extends FragmentActivity implements android.location.L
             onLocationChanged(location);
 
         }
-
 
     }
 

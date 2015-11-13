@@ -1,4 +1,4 @@
-package com.morgan.yvonne.scavengerhunter;
+package com.morgan.yvonne.scavengerhunter.util;
 
 
 import android.app.Application;

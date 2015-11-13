@@ -8,6 +8,15 @@
                 android:paddingBottom="@dimen/activity_vertical_margin"
                 tools:context=".MainActivity">
 
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/imgSherlockMap"
+        android:src="@drawable/sherlock_map"
+        android:layout_above="@+id/txtCreateHunt"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"/>
+
     <Button
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
@@ -60,6 +69,7 @@
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true"
         android:layout_marginTop="15dp"
+        android:imeOptions="actionNext"
         android:hint="221b Baker Street, London NW1 6XE, United Kingdom"/>
 
     <EditText
@@ -69,6 +79,7 @@
         android:layout_below="@+id/txtEnterStartLocation"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="20dp"
+        android:imeOptions="actionDone"
         android:hint="Help find clues!"/>
 
     <TextView
@@ -92,13 +103,6 @@
         android:layout_alignLeft="@+id/txtAddress"
         android:layout_alignStart="@+id/txtAddress"/>
 
-    <ImageView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/imgSherlockMap"
-        android:src="@drawable/sherlock_map"
-        android:layout_above="@+id/txtCreateHunt"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"/>
+
 
 </RelativeLayout>
