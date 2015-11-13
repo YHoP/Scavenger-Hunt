@@ -1,10 +1,11 @@
 package com.morgan.yvonne.scavengerhunter.ui;
 
-import android.app.Activity;
-import android.content.Context;
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
+import android.location.Address;
+import android.location.Geocoder;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -14,15 +15,16 @@ import android.widget.Toast;
 
 import com.morgan.yvonne.scavengerhunter.R;
 import com.morgan.yvonne.scavengerhunter.models.Location;
-import com.parse.ParseAnonymousUtils;
 import com.parse.ParseGeoPoint;
-import com.parse.ParseObject;
 import com.parse.ParseUser;
+
+import java.io.IOException;
+import java.util.List;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
 
-public class MainActivity extends Activity {
+public class MainActivity extends AppCompatActivity {
 
     ParseUser mCurrentuser;
 
@@ -32,6 +34,7 @@ public class MainActivity extends Activity {
     @Bind(R.id.txtEnterDescription)EditText mTxtEnterDescription;
 
     private String mStartLocation, mDescription;
+    ParseGeoPoint mGeoPoint;
 
 
     @Override
@@ -46,45 +49,49 @@ public class MainActivity extends Activity {
                 mStartLocation = mTxtEnterStartLocation.getText().toString();
                 mDescription = mTxtEnterDescription.getText().toString();
 
-                convertAddressToLatLng(mStartLocation);
+                try {
+                    convertAddressToLatLng(mStartLocation);
+                    Location location = new Location(mStartLocation, mDescription, mGeoPoint);
 
-                Location location = new Location(mStartLocation, mDescription);
+                    location.save(MainActivity.this, new Runnable() {
+                        @Override
+                        public void run() {
+                            goToLocationListActivity();
+                        }
+                    });
+                } catch (IOException e) {
+                    e.printStackTrace();
+                    Log.i("Get GeoPoint", "Failed");
+                }
 
-                location.save(MainActivity.this, new Runnable() {
-                    @Override
-                    public void run() {
-                        goToLocationListActivity();
-                    }
-                });
             }
         });
 
-
-//
-//        if(ParseAnonymousUtils.isLinked(ParseUser.getCurrentUser())){
-//            goToLoginActivity();
-//            finish();
-//        } else {
-            mCurrentuser = ParseUser.getCurrentUser();
-            if (mCurrentuser == null) {
-                goToLoginActivity();
-                finish();
-            } else {
-                String user = mCurrentuser.getString("username");
-                Toast.makeText(this, "Hello " + user, Toast.LENGTH_LONG).show();
-            }
-
-//        }
-
+        mCurrentuser = ParseUser.getCurrentUser();
+        if (mCurrentuser == null) {
+            goToLoginActivity();
+            finish();
+        } else {
+            String user = mCurrentuser.getString("username");
+            Toast.makeText(this, "Hello " + user, Toast.LENGTH_LONG).show();
+        }
 
     }
 
 
-    public ParseGeoPoint convertAddressToLatLng(String location) {
-        ParseGeoPoint parseGeoPoint;
+    private void convertAddressToLatLng(String location) throws IOException{
 
+        Geocoder geocoder = new Geocoder(this);
+        List<Address> list = geocoder.getFromLocationName(location, 1);
+        Address add = list.get(0);
+        String locality = add.getLocality();
 
-        return parseGeoPoint;
+        Double lat = add.getLatitude();
+        Double lng = add.getLongitude();
+        mGeoPoint = new ParseGeoPoint(lat, lng);
+        Log.i("LatLng: ", lat + ", " +  lng );
+        Toast.makeText(this, locality, Toast.LENGTH_LONG).show();
+
     }
 
     private void goToLocationListActivity() {
