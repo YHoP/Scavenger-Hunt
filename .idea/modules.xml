@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/ScavengerHunter.iml" filepath="$PROJECT_DIR$/ScavengerHunter.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Scavenger-Hunt.iml" filepath="$PROJECT_DIR$/Scavenger-Hunt.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
     </modules>
   </component>
